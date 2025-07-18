@@ -1,0 +1,118 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+  
+  body {
+    @apply bg-gray-50 text-gray-900;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply px-4 py-2 rounded-lg font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2;
+  }
+  
+  .btn-primary {
+    @apply btn bg-primary-600 text-white hover:bg-primary-700 focus:ring-primary-500;
+  }
+  
+  .btn-secondary {
+    @apply btn bg-gray-200 text-gray-900 hover:bg-gray-300 focus:ring-gray-500;
+  }
+  
+  .btn-danger {
+    @apply btn bg-red-600 text-white hover:bg-red-700 focus:ring-red-500;
+  }
+  
+  .card {
+    @apply bg-white rounded-lg shadow-sm border border-gray-200 p-4;
+  }
+  
+  .input {
+    @apply w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent;
+  }
+  
+  .modal-overlay {
+    @apply fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50;
+  }
+  
+  .modal-content {
+    @apply bg-white rounded-lg shadow-xl max-w-md w-full mx-4 max-h-[90vh] overflow-y-auto;
+  }
+  
+  .board-column {
+    @apply bg-gray-100 rounded-lg p-4 min-h-[500px] w-80;
+  }
+  
+  .task-card {
+    @apply bg-white rounded-lg shadow-sm border border-gray-200 p-3 mb-3 cursor-pointer hover:shadow-md transition-shadow duration-200;
+  }
+  
+  .task-card.dragging {
+    @apply shadow-lg rotate-2 scale-105;
+  }
+  
+  .status-badge {
+    @apply px-2 py-1 rounded-full text-xs font-medium;
+  }
+  
+  .status-icebox {
+    @apply status-badge bg-gray-100 text-gray-700;
+  }
+  
+  .status-backlog {
+    @apply status-badge bg-blue-100 text-blue-700;
+  }
+  
+  .status-ongoing {
+    @apply status-badge bg-yellow-100 text-yellow-700;
+  }
+  
+  .status-review {
+    @apply status-badge bg-purple-100 text-purple-700;
+  }
+  
+  .status-done {
+    @apply status-badge bg-green-100 text-green-700;
+  }
+  
+  .priority-badge {
+    @apply px-2 py-1 rounded-full text-xs font-medium;
+  }
+  
+  .priority-low {
+    @apply priority-badge bg-gray-100 text-gray-700;
+  }
+  
+  .priority-medium {
+    @apply priority-badge bg-blue-100 text-blue-700;
+  }
+  
+  .priority-high {
+    @apply priority-badge bg-orange-100 text-orange-700;
+  }
+  
+  .priority-urgent {
+    @apply priority-badge bg-red-100 text-red-700;
+  }
+}
+
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .text-shadow {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  }
+} 
