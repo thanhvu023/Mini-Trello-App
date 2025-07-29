@@ -32,10 +32,13 @@ const EmailVerificationPage = () => {
     setLoading(true)
     
     try {
-      await login(email, verificationCode)
+      console.log('🔍 Submitting verification code:', verificationCode)
+      const response = await login(email, verificationCode)
+      console.log('✅ Login successful:', response)
       // Đăng nhập thành công, chuyển đến dashboard
       navigate('/dashboard')
     } catch (err) {
+      console.error('❌ Login error:', err)
       setError(err.response?.data?.message || 'Mã xác thực không đúng')
     } finally {
       setLoading(false)
