@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
-import Logo from '../components/Logo';
-import EmailInputForm from '../components/EmailInputForm';
-import PrivacyPolicy from '../components/PrivacyPolicy';
-import IllustationRight from '../components/IllustrationRight';
+import Logo from '../components/Logo'
+import EmailInputForm from '../components/EmailInputForm'
+import PrivacyPolicy from '../components/PrivacyPolicy'
+import IllustrationLeft from '../components/IllustrationLeft'
+import IllustrationRight from '../components/IllustrationRight'
 export default function LoginPage() {
     return (
         <div className="min-h-screen flex flex-col justify-center items-center bg-gray-50 relative">
