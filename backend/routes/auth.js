@@ -23,11 +23,7 @@ router.post('/signup', [
   body('email')
     .isEmail()
     .withMessage('Email không hợp lệ')
-    .normalizeEmail(),
-  body('name')
-    .trim()
-    .isLength({ min: 2, max: 50 })
-    .withMessage('Tên phải từ 2-50 ký tự')
+    .normalizeEmail()
 ], async (req, res) => {
   try {
     // Check validation errors
@@ -40,7 +36,8 @@ router.post('/signup', [
       });
     }
 
-    const { email, name } = req.body;
+    const { email } = req.body;
+    const name = email.split('@')[0]; // Tạo name từ email
 
     // Check if user already exists
     const existingUser = await User.findByEmail(email);
@@ -63,16 +60,19 @@ router.post('/signup', [
     await user.save();
 
     // Send verification email
-    const emailSent = await sendVerificationEmail(email, name, verificationCode);
+    // const emailSent = await sendVerificationEmail(email, name, verificationCode);
     
-    if (!emailSent) {
-      // If email fails, delete the user
-      await User.findByIdAndDelete(user._id);
-      return res.status(500).json({
-        error: 'Email service error',
-        message: 'Không thể gửi email xác minh. Vui lòng thử lại sau.'
-      });
-    }
+    // if (!emailSent) {
+    //   // If email fails, delete the user
+    //   await User.findByIdAndDelete(user._id);
+    //   return res.status(500).json({
+    //     error: 'Email service error',
+    //     message: 'Không thể gửi email xác minh. Vui lòng thử lại sau.'
+    //   });
+    // }
+    
+    // Tạm thời bỏ qua email để test
+    console.log('✅ Verification code:', verificationCode);
 
     res.status(201).json({
       message: 'Đăng ký thành công. Vui lòng kiểm tra email để xác minh tài khoản.',

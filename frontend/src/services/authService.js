@@ -33,8 +33,8 @@ api.interceptors.response.use(
 
 export const authService = {
   // Register new user
-  async register(email, name) {
-    return await api.post('/auth/signup', { email, name })
+  async register(email) {
+    return await api.post('/auth/signup', { email })
   },
 
   // Login with email and verification code
